@@ -45,7 +45,7 @@ fetch(`http://apicricketchampion.in/apiv3/liveMatchList/${apiKey}`, requestOptio
                                                 </div>
                                                 <div class="mid-dot">
                                                     <img
-                                                    src="img/versus-or-vs-logo-design-template-vector.jpg"
+                                                    src="img/versus-or-vs-logo-design-template-vector-removebg-preview.png"
                                                     class="team-mid-flag"
                                                     />
                                                 </div>
@@ -171,7 +171,7 @@ fetch(`http://apicricketchampion.in/apiv3/recentMatches/${apiKey}`, requestOptio
                                                   </div>
                                                   <div class="mid-dot">
                                                       <img
-                                                      src="img/versus-or-vs-logo-design-template-vector.jpg"
+                                                      src="img/versus-or-vs-logo-design-template-vector-removebg-preview.png"
                                                       class="team-mid-flag"
                                                       />
                                                   </div>
@@ -292,7 +292,7 @@ fetch(`http://apicricketchampion.in/apiv3/upcomingMatches/${apiKey}`, requestOpt
                                 <div class="match-status">Upcoming</div>
                                 <div class="updates">
                                     <p> venue : ${match.venue}</p>
-                                    <p> betting rating range ${match.min_rate}-${match.max_rate} </p>
+                            
                                 </div>
 
                                 <div class="score-board">
@@ -306,7 +306,7 @@ fetch(`http://apicricketchampion.in/apiv3/upcomingMatches/${apiKey}`, requestOpt
                                   </div>
                                   <div class="mid-dot">
                                     <img
-                                      src="img/versus-or-vs-logo-design-template-vector.jpg"
+                                      src="img/versus-or-vs-logo-design-template-vector-removebg-preview.png"
                                       class="team-mid-flag"
                                     />
                                   </div>
