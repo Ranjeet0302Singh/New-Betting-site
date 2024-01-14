@@ -21,8 +21,10 @@ fetch(`http://apicricketchampion.in/apiv3/liveMatchList/${apiKey}`, requestOptio
                     if (result.data[i].match_status === "Live") {
                         var match = result.data[i];
                         var match_id = match.match_id;
+                        getLiveMatchData(match_id)
+
                         match_data += `<div class="swiper-slide">
-                                        <a href="LiveMatch.html?match_id=${match_id}">
+                                        <a href="LiveMatch.html?match_id=${match_id}" onclick="getMatchInfo(${match_id})">
                                         <div class="score-card-frame">
                                             <div class="score-card-frame1">
                                             <div class="score-card">
@@ -131,7 +133,7 @@ var requestOptions = {
     redirect: "follow",
 };
 
-fetch(`http://apicricketchampion.in/apiv3/recentMatches/${apiKey}`, requestOptions)
+fetch(`//apicricketchampion.in/apiv3/recentMatches/${apiKey}`, requestOptions)
     .then((response) => response.json()) // Parse response as JSON
     .then((result) => {
 
