@@ -483,10 +483,13 @@ height: 100%;
     align-items: center;
     
 }
+.card{
+  height: 300px;
+}
+
 
 .news-card-container1 {
     display: flex;
-    /* width: 1040px; */
     justify-content: space-around;
     flex-wrap: wrap;
 }

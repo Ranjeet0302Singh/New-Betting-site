@@ -11,6 +11,7 @@ fetch(`http://apicricketchampion.in/apiv3/liveMatchList/${apiKey}`, requestOptio
     .then((result) => {
         if (result.live_count > 0) {
             var live_matches = document.getElementById("live");
+ 
             live_matches.innerHTML = "";
             live_matches.innerHTML += `<h1 style="text-align: center">Live Matches</h1>`;
             live_matches.innerHTML += `<div class="swiper-wrapper"> </div>`;
@@ -20,10 +21,8 @@ fetch(`http://apicricketchampion.in/apiv3/liveMatchList/${apiKey}`, requestOptio
                     if (result.data[i].match_status === "Live") {
                         var match = result.data[i];
                         var match_id = match.match_id;
-                        getLiveMatchData(match_id)
-
                         match_data += `<div class="swiper-slide">
-                                        <a href="LiveMatch.html">
+                                        <a href="LiveMatch.html?match_id=${match_id}">
                                         <div class="score-card-frame">
                                             <div class="score-card-frame1">
                                             <div class="score-card">
@@ -75,7 +74,7 @@ fetch(`http://apicricketchampion.in/apiv3/liveMatchList/${apiKey}`, requestOptio
                 console.log("The 'data' property is not an array.");
             }
         } else {
-            var live_matches = document.getElementById("live");
+           
             live_matches.innerHTML = "";
             live_matches.innerHTML += `<h1 style="text-align: center">Live Matches</h1>`;
             live_matches.innerHTML += `<div class="swiper-wrapper"> </div>`;
@@ -138,7 +137,11 @@ fetch(`http://apicricketchampion.in/apiv3/recentMatches/${apiKey}`, requestOptio
 
 
         var recent_matches = document.getElementById("recent");
+
         recent_matches.innerHTML = "";
+       
+
+
         recent_matches.innerHTML += `<h1 style="text-align: center">Completed Matches</h1>`;
         recent_matches.innerHTML += `<div class="swiper-wrapper"> </div>`;
         if (Array.isArray(result.data)) {
@@ -147,9 +150,8 @@ fetch(`http://apicricketchampion.in/apiv3/recentMatches/${apiKey}`, requestOptio
                 if (result.data[i].match_status === "Finished") {
                     var match = result.data[i];
                     var match_id = match.match_id;
-                    getMatchInfo(match_id)
                     match_data += `<div class="swiper-slide">
-                                          <a href="LiveMatch.html">
+                                          <a href="matchinfo.html?match_id=${match_id}">
                                           <div class="score-card-frame">
                                               <div class="score-card-frame1">
                                               <div class="score-card">
@@ -197,6 +199,16 @@ fetch(`http://apicricketchampion.in/apiv3/recentMatches/${apiKey}`, requestOptio
             recent_matches
                 .querySelector(".swiper-wrapper")
                 .insertAdjacentHTML("beforeend", match_data);
+                // var recentMatchesLink = document.createElement("a");
+                // recentMatchesLink.href = "recentmatchs.html";
+                // recentMatchesLink.style.marginTop = "2rem";
+        
+                // var recentMatchesButton = document.createElement("button");
+                // recentMatchesButton.className = "btn";
+                // recentMatchesButton.textContent = "recent Match";
+        
+                // recentMatchesLink.appendChild(recentMatchesButton);
+                // recent_matches.appendChild(recentMatchesLink);
         } else {
             console.log("The 'data' property is not an array.");
         }
@@ -279,9 +291,9 @@ fetch(`http://apicricketchampion.in/apiv3/upcomingMatches/${apiKey}`, requestOpt
                 if (result.data[i].match_status === "Upcoming") {
                     var match = result.data[i];
                     var match_id = match.match_id;
-                    // getMatchInfo(match_id)
+     
                     match_data += `<div class="swiper-slide">
-                        <a href="#">
+                        <a href="matchinfo.html?match_id=${match_id}">
                           <div class="score-card-frame">
                             <div class="score-card-frame1">
                               <div class="score-card">
@@ -373,37 +385,6 @@ fetch(`http://apicricketchampion.in/apiv3/upcomingMatches/${apiKey}`, requestOpt
 
 
 
-function getMatchInfo(matchId) {
-    var formdata = new FormData();
-    formdata.append("match_id", matchId);
-
-    var requestOptions = {
-        method: 'POST',
-        body: formdata,
-        redirect: 'follow'
-    };
-
-    fetch(`http://apicricketchampion.in/apiv3/matchInfo/${apiKey}`, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-}
-function getLiveMatchData(matchId) {
-    var formdata = new FormData();
-    formdata.append("match_id", matchId);
-
-    var requestOptions = {
-        method: 'POST',
-        body: formdata,
-        redirect: 'follow'
-    };
-
-    fetch(`http://apicricketchampion.in/apiv3/liveMatch/${apiKey}`, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-}
-
 
 
 
@@ -428,9 +409,12 @@ fetch(`http://apicricketchampion.in/apiv3/news/${apiKey}`, requestOptions)
         var news = document.getElementById("news");
         news.innerHTML = "";
         result = JSON.parse(result);
+        console.log(result.data);
 
 
         for (const item of result.data) {
+            var news_id = item.news_id
+
             news.innerHTML += `
             <li>
                 <div class="item">
@@ -444,10 +428,13 @@ fetch(`http://apicricketchampion.in/apiv3/news/${apiKey}`, requestOptions)
                     </div>
                     <div class="card-body">
                         <h4>${item.title}</h4>
+
                     </div>
                     </div>
                 </div>
                 </div>
+              
+
             </li>`;
         }
         $(".bxslider").bxSlider({

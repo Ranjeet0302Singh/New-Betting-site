@@ -2,6 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ChaiSuttaBetting</title>
     <script src="config.js" defer></script>
@@ -176,20 +181,18 @@
     <!-- News -->
 
     <div
-    class="news-add-parent-conatiner"
-    style="padding-bottom: 2rem; background-color: #080808"
-  >
-    <h1 style="padding: 2rem">News</h1>
+      class="news-add-parent-conatiner"
+      style="padding-bottom: 2rem; background-color: #080808"
+    >
+      <h1 style="padding: 2rem">News</h1>
 
-    <div class="example__slider">
-      <ul class="bxslider" id="news">
- 
-      </ul>
+      <div class="example__slider">
+        <ul class="bxslider" id="news"></ul>
+      </div>
+      <a href="news-news.html">
+        <button class="btn">Show More News</button>
+      </a>
     </div>
-    <a href="news.html">
-      <button class="btn">Show More News</button>
-    </a>
-  </div>
     <!-- News end -->
 
     <!-- faq -->
@@ -317,7 +320,6 @@
     <!-- javascript -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-      
       const faqs = document.querySelectorAll(".faq");
 
       faqs.forEach((faq) => {
@@ -388,10 +390,6 @@
       }
 
       items.forEach((item) => item.addEventListener("click", toggleAccordion));
-
-     
-
-  
     </script>
   </body>
 </html>

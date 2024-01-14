@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>live Match</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="LiveMatch.css" />
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+  
+        const match_id = urlParams.get('match_id');
+      </script>
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <div class="header-element">
+        <nav class="navbar">
+          <div class="left">
+            <img src="img/final.png" alt="" class="logo" />
+          </div>
+          <div class="mid" style="color: #fbad18">
+            <h4>Chai Sutta Betting</h4>
+          </div>
+          <div class="right">
+            <button class="btn">Download</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main-section">
+        <h1 class="match-title"><span id="team_a"></span> v/s <span id="team_b"></span></h1>
+  
+        <nav id="main-nav">
+          <a class="match-info-btn btn" id="info" href="">Info</a>
+          <a class="match-commentary-btn btn" id="commentry" href="">Commentary</a>
+          <a class="live-match-btn btn" id="livematch" href="">Live</a>
+          <a class="scorecard-btn btn" id="scorecard" href="">ScoreCard</a>
+          <a class="squad-btn btn" id="squad" href="">Squads</a>
+        </nav>
+        <script>
+          document.getElementById('info').setAttribute('href', `matchinfo.html?match_id=${match_id}`);
+          document.getElementById('commentry').setAttribute('href', `matchcommentry.html?match_id=${match_id}`);
+          document.getElementById('livematch').setAttribute('href', `LiveMatch.html?match_id=${match_id}`);
+          document.getElementById('scorecard').setAttribute('href', `matchscorecard.html?match_id=${match_id}`);
+          document.getElementById('squad').setAttribute('href', `matchplaying11.html?match_id=${match_id}`);
+        </script>
+  
+        <div class="score">
+          <div class="left">
+            <div class="img">
+              <img id="team_a_img"
+                src=""
+                alt=""
+              />
+            </div>
+            <div class="score-left">
+              <p id="team_a_short">PAK</p>
+              <p id="team_a_scores">100-0</p>
+              <p id="team_a_over">5.0</p>
+            </div>
+          </div>
+          <div class="mid">
+            <p class="live-status">lorem</p>
+          </div>
+          <div class="right">
+            <div class="score-right">
+              <p id="team_b_short">PAK</p>
+              <p id="team_b_scores">100-0</p>
+              <p id="team_b_over">20.0</p>
+            </div>
+            <div class="img">
+              <img id="team_b_img" src=""
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="run-rate">
+          <div class="cur-rate">
+            <p id="curr_rate">CRR:10</p>
+          </div>
+          <div class="toss" id="toss">India Win Toss</div>
+          <div class="req-rate">
+            <p id="runrate">RRR:</p>
+          </div>
+        </div>
+      </div>
+
+
+
+  
+
+    <!-- match commentary start -->
+    <div class="match-commentary" >
+      <div class="score-commentry-section" id="match_commentry">
+        
+      </div>
+    </div>
+    <!-- match commentary End -->
+    <script>
+        var apiKey = "bd494afa153c0ddbfb33e7ba8cf51004";
+  
+  
+  
+  
+  
+        var formdata = new FormData();
+        formdata.append("match_id", match_id);
+  
+        var requestOptions = {
+          method: 'POST',
+          body: formdata,
+          redirect: 'follow'
+        };
+  
+        fetch(`http://apicricketchampion.in/apiv3/liveMatch/${apiKey}`, requestOptions)
+          .then(response => response.text())
+          .then(result => {
+            var team_a = document.getElementById('team_a');
+            var team_b = document.getElementById('team_b');
+            var team_a_short = document.getElementById('team_a_short');
+            var team_b_short = document.getElementById('team_b_short');
+            var team_a_scores = document.getElementById('team_a_scores');
+            var team_b_scores = document.getElementById('team_b_scores');
+            var team_a_over = document.getElementById('team_a_over');
+            var team_b_over = document.getElementById('team_b_over');
+            var team_a_img = document.getElementById('team_a_img');
+            var team_b_img = document.getElementById('team_b_img');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            result = JSON.parse(result);
+            result = result.data;
+            team_a.innerText=result.team_a;
+            team_b.innerText=result.team_b;
+            var runrate= document.getElementById('runrate');
+            runrate.innerText=`RRR: ${result.runrate}`;
+  
+  
+            var curr_rate= document.getElementById('curr_rate');
+            curr_rate.innerText=`CRR: ${result.curr_rate}`;
+            var toss = document.getElementById('toss');
+            toss.innerText= result.toss;
+            team_a_short.innerText= result.team_a_short;
+            team_b_short.innerText= result.team_b_short;
+            team_a_scores.innerText= result.team_a_scores;
+            team_b_scores.innerText= result.team_b_scores;
+            team_a_over.innerText= result.team_a_over;
+            team_b_over.innerText= result.team_b_over;
+            team_a_img.src = result.team_a_img;
+            team_b_img.src = result.team_b_img;
+            
+            
+          })
+          .catch(error => console.log('error', error));
+  
+      </script>
+
+
+<script>
+    var formdata = new FormData();
+    formdata.append("match_id", match_id);
+
+    var requestOptions = {
+    method: 'POST',
+    body: formdata,
+    redirect: 'follow'
+    };
+
+    fetch(`http://apicricketchampion.in/apiv3/commentary/${apiKey}`, requestOptions)
+    .then(response => response.text())
+    .then(result => {
+        result = JSON.parse(result);
+        result = result.data;
+        for (const item in result) {
+            for (var overs in result[item]){
+                for (var comment in result[item][overs]){
+                    console.log(result[item][overs][comment].type);
+                    if (result[item][overs][comment].type === 2) {
+                        match_commentry.innerHTML += `<div class="commentry-header">
+                                                        <div class="commentry-top-header">
+                                                            <span>${result[item][overs][comment].data.title}</span>
+                                                            <span>(${result[item][overs][comment].data.runs} runs)</span>
+                                                        </div>
+                                                        <div class="commentry-bottom-header">
+                                                            <div class="left">
+                                                            <span>${result[item][overs][comment].data.team}</span>
+                                                            <span>${result[item][overs][comment].data.team_score} - ${result[item][overs][comment].data.team_wicket}</span>
+                                                            </div>
+                                                            <div class="mid">
+                                                            <span>${result[item][overs][comment].data.batsman_1_name}</span>
+                                                            <span>${result[item][overs][comment].data.batsman_2_name}</span>
+                                                            <span>${result[item][overs][comment].data.bolwer_name}</span>
+                                                            </div>
+                                                            <div class="right">
+                                                            <span>${result[item][overs][comment].data.batsman_1_runs} (${result[item][overs][comment].data.batsman_1_balls})</span>
+                                                            <span>${result[item][overs][comment].data.batsman_2_runs} (${result[item][overs][comment].data.batsman_2_balls})</span>
+                                                            <span>${result[item][overs][comment].data.bolwer_overs} - ${result[item][overs][comment].data.bolwer_maidens} ${result[item][overs][comment].data.bolwer_runs} - ${result[item][overs][comment].data.bolwer_wickets}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>`;
+                    } else {
+                        if (result[item][overs][comment].data.wicket === "1"){
+                            match_commentry.innerHTML += `<div class="commentry-description">
+                                                            <div class="left">${result[item][overs][comment].data.overs}<span class="run-wicket">wk</span></div>
+                                                            <div class="right">
+                                                                <h4>${result[item][overs][comment].data.title}</h4>
+                                                                <p>
+                                                                    ${result[item][overs][comment].data.description}
+                                                                </p>
+                                                            </div>
+                                                        </div>`;
+
+                        }else {
+                            if (result[item][overs][comment].data.runs === "4"){
+                                match_commentry.innerHTML += `<div class="commentry-description">
+                                    <div class="left">${result[item][overs][comment].data.overs}<span></span><span class="run-4s">${result[item][overs][comment].data.runs}</span></div>
+                                    <div class="right">
+                                        <h4>${result[item][overs][comment].data.title}</h4>
+                                        <p>
+                                            ${result[item][overs][comment].data.description}
+                                        </p>
+                                    </div>
+                                </div>`;
+                            }else if (result[item][overs][comment].data.runs === "6"){
+                                match_commentry.innerHTML += `<div class="commentry-description">
+                                    <div class="left">${result[item][overs][comment].data.overs}<span></span><span class="run-6s">${result[item][overs][comment].data.runs}</span></div>
+                                    <div class="right">
+                                        <h4>${result[item][overs][comment].data.title}</h4>
+                                        <p>
+                                            ${result[item][overs][comment].data.description}
+                                        </p>
+                                    </div>
+                                </div>`;
+                            } else {
+                                match_commentry.innerHTML += `<div class="commentry-description">
+                                    <div class="left">${result[item][overs][comment].data.overs}<span></span><span class="run-all">${result[item][overs][comment].data.runs}</span></div>
+                                    <div class="right">
+                                        <h4>${result[item][overs][comment].data.title}</h4>
+                                        <p>
+                                            ${result[item][overs][comment].data.description}
+                                        </p>
+                                    </div>
+                                </div>`;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    })
+    .catch(error => console.log('error', error));
+</script>
+  </body>
+</html>

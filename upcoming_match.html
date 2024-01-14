@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>recent match</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="LiveMatch.css" />
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+
+      const match_id = urlParams.get('match_id');
+    </script>
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <div class="header-element">
+        <nav class="navbar">
+          <div class="left">
+            <img src="img/final.png" alt="" class="logo" />
+          </div>
+          <div class="right">
+            <button class="btn">Download</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- header end -->
+
+    <!-- Live Scores -->
+    <div class="main-section">
+      <h1 class="match-title"><span id="team_a"></span> v/s <span id="team_b"></span></h1>
+
+      <nav id="main-nav">
+        <a class="match-info-btn btn active" id="info">Info</a>
+      </nav>
+
+      <div class="score">
+        <div class="left">
+          <div class="img">
+            <img id="team_a_img"
+              src=""
+              alt=""
+            />
+          </div>
+          <div class="score-left">
+            <p id="team_a_short"></p>
+          </div>
+        </div>
+        <div class="mid">
+          <p class="live-status">vs</p>
+        </div>
+        <div class="right">
+          <div class="score-right">
+            <p id="team_b_short"></p>
+          </div>
+          <div class="img">
+            <img id="team_b_img" src=""
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+    <!-- Live Scores end -->
+
+    <!-- live match data end -->
+
+    <!-- Match Info Start -->
+    <div class="match-info" style="display: block" id="match_info">
+      <div class="sport-match-name cricket-info-details">
+        <p class="matchs">3rd Test</p>
+        <p class="matchvsmatch"><strong>AUS vs PAK</strong></p>
+      </div>
+      <div class="sport-match-name">
+        <p class="matchTime">
+          <i class="fa-regular fa-calendar-days"></i>05:00 AM 03-Jan your time
+        </p>
+      </div>
+      <div class="sport-match-name">
+        <p>
+          <i class="fa-solid fa-map-marker"></i>
+          <strong>Sydney Cricket Ground, Sydney</strong>
+        </p>
+      </div>
+
+      <div class="sport-match-name">
+        <h6>TOSS</h6>
+        <p>Pakistan have won the toss and have opted to bat</p>
+      </div>
+
+      <div class="sport-match-name">
+        <h6>UMPIRE</h6>
+        <p>Joel Wilson, Richard Illingworth</p>
+      </div>
+
+      <div class="sport-match-name">
+        <h6>3RD UMPIRE</h6>
+        <p>Michael Gough</p>
+      </div>
+      <div class="sport-match-name">
+        <h6>Referee</h6>
+        <p>Javagal Srinath</p>
+      </div>
+
+      <div class="match-weather sport-match-name">
+        <h6>Weather Report (Sydney)</h6>
+        <div class="weather-report">
+          <span
+            ><img
+              src="https://cdn.weatherapi.com/weather/64x64/day/116.png"
+            />29℃</span
+          >
+          <span>Partly cloudy</span>
+        </div>
+        <div class="weather-report">
+          <span>Wind Speed</span>
+          <span>21.7 m/h</span>
+        </div>
+        <div class="weather-report">
+          <span>Humidity</span>
+          <span>48 %</span>
+        </div>
+        <div class="weather-report">
+          <span>Rain Chance</span>
+          <span>50 %</span>
+        </div>
+      </div>
+
+      <div class="match-weather sport-match-name">
+        <h6>Team Forms (Last 5 matches)</h6>
+        <div class="team-report">
+          <div class="report-data">
+            <span>AUS</span>
+          </div>
+          <div class="report-data">
+            <span class="success">W</span><span class="success">W</span
+            ><span class="lose">L</span><span class="lose">L</span
+            ><span class="success">W</span>
+          </div>
+        </div>
+        <div class="team-report">
+          <div class="report-data">
+            <span>PAK</span>
+          </div>
+          <div class="report-data">
+            <span class="lose">L</span><span class="lose">L</span
+            ><span class="lose">L</span><span class="success">W</span
+            ><span class="success">W</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="match-weather sport-match-name">
+        <h6>Toss Comparison (Last 5 matches)</h6>
+        <div class="team-report">
+          <div class="report-data">
+            <span>AUS</span>
+          </div>
+          <div class="report-data">
+            <span class="lose">L</span><span class="success">W</span
+            ><span class="success">W</span><span class="success">W</span
+            ><span class="success">W</span>
+          </div>
+        </div>
+        <div class="team-report">
+          <div class="report-data">
+            <span>PAK</span>
+          </div>
+          <div class="report-data">
+            <span class="success">W</span><span class="lose">L</span
+            ><span class="lose">L</span><span class="success">W</span
+            ><span class="lose">L</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="match-weather sport-match-name">
+        <h6>Head To Head (Last 10 matches)</h6>
+        <div class="team-report">
+          <span>AUS</span>
+          <span>2</span>
+        </div>
+        <div class="weather-report">
+          <span>PAK</span>
+          <span>0</span>
+        </div>
+        <div class="head-matches">
+          <div class="head-match-details">
+            <div class="matchDetails">
+              AUS<br /><span>318-10 &amp; 262-10</span>96.5 &amp; 84.1
+            </div>
+            <div class="matchDetails">
+              <span class="result">Australia won by 79 runs</span><br />
+              2nd Test
+            </div>
+            <div class="matchDetails">
+              PAK<br /><span>264-10 &amp; 237-10</span>73.5 &amp; 67.2
+            </div>
+          </div>
+          <div class="head-match-details">
+            <div class="matchDetails">
+              AUS<br /><span>487-10 &amp; 233-5</span>113.2 &amp; 63.2
+            </div>
+            <div class="matchDetails">
+              <span class="result">Australia won by 360 runs</span><br />
+              1st Test
+            </div>
+            <div class="matchDetails">
+              PAK<br /><span>271-10 &amp; 89-10</span>101.5 &amp; 30.2
+            </div>
+          </div>
+          <div class="head-match-details">
+            <div class="matchDetails">AUS<br /><span>367-9</span>50</div>
+            <div class="matchDetails">
+              <span class="result">Australia won by 62 runs</span><br />
+              18th Match
+            </div>
+            <div class="matchDetails">PAK<br /><span>305-10</span>45.3</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="match-weather sport-match-name">
+        <h6>Team Comparison (Last 10 matches)</h6>
+        <div class="team-compare-report">
+          <div class="compare-head">
+            <span
+              >AUS<br />
+              vs all teams</span
+            >
+            <span
+              >PAK<br />
+              vs all teams</span
+            >
+          </div>
+
+          <div class="team-compare">
+            <div class="team-compare-sec">
+              <span>10</span>
+              <span>Win</span>
+              <span>2</span>
+            </div>
+            <div class="team-compare-sec">
+              <span>305</span>
+              <span>Avg Score</span>
+              <span>203</span>
+            </div>
+            <div class="team-compare-sec">
+              <span>487</span>
+              <span>Highest Score</span>
+              <span>205</span>
+            </div>
+            <div class="team-compare-sec">
+              <span>215</span>
+              <span>Lowest Score</span>
+              <span>200</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+ 
+    <script>
+      var apiKey = "bd494afa153c0ddbfb33e7ba8cf51004";
+
+
+
+
+
+      var formdata = new FormData();
+      formdata.append("match_id", match_id);
+
+      var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+      };
+
+      fetch(`http://apicricketchampion.in/apiv3/liveMatch/${apiKey}`, requestOptions)
+        .then(response => response.text())
+        .then(result => {
+          var team_a = document.getElementById('team_a');
+          var team_b = document.getElementById('team_b');
+          var team_a_short = document.getElementById('team_a_short');
+          var team_b_short = document.getElementById('team_b_short');
+          var team_a_img = document.getElementById('team_a_img');
+          var team_b_img = document.getElementById('team_b_img');
+          result = JSON.parse(result);
+          result = result.data;
+          team_a.innerText=result.team_a;
+          team_b.innerText=result.team_b;
+
+
+          team_a_short.innerText= result.team_a_short;
+          team_b_short.innerText= result.team_b_short;
+          team_a_img.src = result.team_a_img;
+          team_b_img.src = result.team_b_img;
+          
+          
+        })
+        .catch(error => console.log('error', error));
+
+    </script>
+    <script>
+      var formdata = new FormData();
+      formdata.append("match_id", match_id);
+
+      var requestOptions = {
+      method: 'POST',
+      body: formdata,
+      redirect: 'follow'
+      };
+
+      fetch(`http://apicricketchampion.in/apiv3/matchInfo/${apiKey}`, requestOptions)
+      .then(response => response.text())
+      .then(result => {
+          var match_info = document.getElementById('match_info');
+          result = JSON.parse(result);
+          result =result.data;
+          match_info.innerHTML=`
+          <div class="sport-match-name cricket-info-details">
+              <p class="matchs">${ result.match_type}</p>
+              <p class="matchvsmatch"><strong>${result.team_a_short} vs ${result.team_b_short}</strong></p>
+          </div>
+          <div class="sport-match-name">
+              <p class="matchTime">
+              <i class="fa-regular fa-calendar-days"></i>${result.match_time} on ${result.match_date} 
+              </p>
+          </div>
+          <div class="sport-match-name">
+              <p>
+              <i class="fa-solid fa-map-marker"></i>
+              <strong>${result.venue}</strong>
+              </p>
+          </div>`;
+      })
+      .catch(error => console.log('error', error));
+    </script>
+  </body>
+</html>

@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="LiveMatch.css" />
     <script>
-      const urlParams = new URLSearchParams(window.location.search);
-
-      const match_id = urlParams.get('match_id');
-    </script>
+        const urlParams = new URLSearchParams(window.location.search);
+  
+        const match_id = urlParams.get('match_id');
+      </script>
   </head>
   <body>
     <!-- header -->
@@ -31,8 +31,6 @@
     </header>
 
     <!-- header end -->
-
-    <!-- Live Scores -->
     <div class="main-section">
         <h1 class="match-title"><span id="team_a"></span> v/s <span id="team_b"></span></h1>
   
@@ -92,56 +90,38 @@
           </div>
         </div>
       </div>
-    <!-- Live Scores end -->
 
-    <!-- live match data start -->
-
-    <div class="live-match">
-      
-      <h1 style="text-align: center; margin: 2rem; ">Overs</h1>
-      <div class="overs">
-        <div class="match-live-overr live-match-overs sport-team-score-details" id="last_overs">
-          
+    <div class="squad">
+      <div class="team-flags">
+        <div class="left">
+          <div>
+            <img id="team_a_flag"
+              src=""
+              alt=""
+            />
+          </div>
+          <div id="team_1"></div>
+        </div>
+        <div class="right">
+          <div>
+            <img id="team_b_flag"
+              src=""
+              alt=""
+            />
+          </div>
+          <div id="team_2"></div>
         </div>
       </div>
-      <div class="match-live-batter sport-team-score-details">
-        <table>
-          <thead>
-            <tr>
-              <th>Batter</th>
-              <th>R (B)</th>
-              <th>4s</th>
-              <th>6s</th>
-              <th>SR</th>
-            </tr>
-          </thead>
-          <tbody id="battsmen_details">
+      <h1 style="text-align: center">Playing XI</h1>
+
+      <div class="players-container" style="display: flex;">
+        <div class="team_a_players" style="flex: 1;" id="team_a_players">
+
             
-          </tbody>
-        </table>
-      </div>
-      <div class="match-live-batter sport-team-score-details yetBet">
-        <div class="batsman-heading">
-          <h5>Yet To Bet</h5>
+          </div>
+        <div class="team_b_players" style="flex: 1;" id="team_b_players">
+        
         </div>
-        <div class="batsman-details" id="yettobat">
-
-        </div>
-      </div>
-      <div class="match-live-bowler sport-team-score-details">
-        <table>
-          <thead>
-            <tr>
-              <th>Bowler</th>
-              <th>W-R</th>
-              <th>Over</th>
-              <th>Econ</th>
-            </tr>
-          </thead>
-          <tbody id="bowler_details">
-            
-          </tbody>
-        </table>
       </div>
     </div>
     <script>
@@ -171,17 +151,17 @@
             var team_b_scores = document.getElementById('team_b_scores');
             var team_a_over = document.getElementById('team_a_over');
             var team_b_over = document.getElementById('team_b_over');
+            
             var team_a_img = document.getElementById('team_a_img');
             var team_b_img = document.getElementById('team_b_img');
-            var team_b = document.getElementById('team_b');
-            var team_b = document.getElementById('team_b');
-            var team_b = document.getElementById('team_b');
-            var team_b = document.getElementById('team_b');
-            var team_b = document.getElementById('team_b');
-            var team_b = document.getElementById('team_b');
-            var team_b = document.getElementById('team_b');
-            var team_b = document.getElementById('team_b');
-            var team_b = document.getElementById('team_b');
+            
+            var team_a_flag = document.getElementById('team_a_flag');
+            var team_b_flag = document.getElementById('team_b_flag');
+
+            
+            var team_1 = document.getElementById('team_1');
+            var team_2 = document.getElementById('team_2');
+
             result = JSON.parse(result);
             result = result.data;
             team_a.innerText=result.team_a;
@@ -202,90 +182,81 @@
             team_b_over.innerText= result.team_b_over;
             team_a_img.src = result.team_a_img;
             team_b_img.src = result.team_b_img;
+            team_a_flag.src = result.team_a_img;
+            team_b_flag.src = result.team_b_img;
+            
+            
+            team_1.innerText=result.team_a;
+            team_2.innerText=result.team_b;
             
             
           })
           .catch(error => console.log('error', error));
   
-      </script>
-
-
-      <script>
+   
         var formdata = new FormData();
         formdata.append("match_id", match_id);
 
         var requestOptions = {
-          method: 'POST',
-          body: formdata,
-          redirect: 'follow'
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
         };
 
-        fetch(`http://apicricketchampion.in/apiv3/liveMatch/${apiKey}`, requestOptions)
-          .then(response => response.text())
-          .then(result => {
-            var live_details = document.getElementById('last_overs');
+        fetch(`http://apicricketchampion.in/apiv3/playingXiByMatchId/${apiKey}`, requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            var team_a_players = document.getElementById('team_a_players');
+            var team_b_players = document.getElementById('team_b_players');
+
             result = JSON.parse(result);
             result = result.data;
-            live_details.innerHTML = "";
-            for( var item in result.last4overs){
-              live_details.innerHTML+= `<div class="liver-overs" id="over${result.last4overs[item].over}">
-                <span>Over ${result.last4overs[item].over}</span>
-                </div>`;
-              var x = `over${result.last4overs[item].over}`;
-              var balls_in_over = document.getElementById(x);
-              for( var ball of result.last4overs[item].balls){
-                if( ball === "W"){
-                  balls_in_over.innerHTML+=`<span class="run-ot">W</span>`;
-                } else if(ball === "6"){
-                  balls_in_over.innerHTML+=`<span class="run-6s">6</span>`;
-                } else if(ball === "4"){
-                  balls_in_over.innerHTML+=`<span class="run-4s">4</span>`;
-                } else{
-                  balls_in_over.innerHTML+=`<span class="run-all">${ball}</span>`;
-                }
-              }
-              balls_in_over.innerHTML+=`= ${result.last4overs[item].runs}`;
+
+            for (const item of result.team_a.player) {
+                team_a_players.innerHTML += `
+                <div class="player-info">
+                    <div class="">
+                    <img
+                        class="img"
+                        width="40px"
+                        height="40px"
+                        style="border-radius: 50%"
+                        src="${item.image}"
+                    />
+                    </div>
+                    <div class="player-name">
+                    <div>
+                        ${item.name} <br />
+                        <span class="">${item.play_role}</span>
+                    </div>
+                    </div>
+                </div>
+                `;
             }
 
-            var battsmen_details = document.getElementById('battsmen_details');
-
-            for( var men in result.batsman){
-              battsmen_details.innerHTML+=`<tr>
-                                            <td>${result.batsman[men].name}</td>
-                                            <td>${result.batsman[men].run} (${result.batsman[men].ball})</td>
-                                            <td>${result.batsman[men].fours}</td>
-                                            <td>${result.batsman[men].sixes}</td>
-                                            <td>${result.batsman[men].strike_rate}</td>
-                                          </tr>`;
-                                        
+            for (const item of result.team_b.player) {
+                team_b_players.innerHTML += `
+                <div class="player-info">
+                    <div class="">
+                    <img
+                        class="img"
+                        width="40px"
+                        height="40px"
+                        style="border-radius: 50%"
+                        src="${item.image}"
+                    />
+                    </div>
+                    <div class="player-name">
+                    <div>
+                        ${item.name} <br />
+                        <span class="">${item.play_role}</span>
+                    </div>
+                    </div>
+                </div>
+                `;
             }
-            var yettobat = document.getElementById('yettobat');
-            var y = "";
-            for(var player of result.yet_to_bet){
-              y+=player+", ";
-            }
-            yettobat.innerHTML+= y;
-
-            var bowler_details = document.getElementById('bowler_details');
-
-            bowler_details.innerHTML+=`<tr>
-              <td>*${result.bolwer.name}</td>
-              <td>${result.bolwer.wicket} - ${result.bolwer.run}</td>
-              <td>${result.bolwer.over}</td>
-              <td>${result.bolwer.economy}</td>
-            </tr>`;
-            bowler_details.innerHTML+=`<tr>
-              <td>${result.last_bolwer.name}</td>
-              <td>${result.last_bolwer.wicket} - ${result.last_bolwer.run}</td>
-              <td>${result.last_bolwer.over}</td>
-              <td>${result.last_bolwer.economy}</td>
-            </tr>`;
-
-
-          })
-          .catch(error => console.log('error', error));
-      </script>
-
-    
+        })
+        .catch(error => console.log('error', error));
+    </script>
   </body>
 </html>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,80 +7,91 @@
     <title>live Match</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="LiveMatch.css" />
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+  
+        const match_id = urlParams.get('match_id');
+      </script>
   </head>
   <body>
     <!-- header -->
     <header>
-      <div class="header-element">
-        <nav class="navbar">
-          <div class="left">
-            <img src="img/final.png" alt="" class="logo" />
-          </div>
-          <div class="right">
-            <button class="btn">Download</button>
-          </div>
-        </nav>
-      </div>
-    </header>
+        <div class="header-element">
+          <nav class="navbar">
+            <div class="left">
+              <img src="img/final.png" alt="" class="logo" />
+            </div>
+            <div class="mid" style="color: #fbad18">
+              <h4>Chai Sutta Betting</h4>
+            </div>
+            <div class="right">
+              <button class="btn">Download</button>
+            </div>
+          </nav>
+        </div>
+      </header>
 
     <!-- header end -->
 
-    <!-- Live Scores -->
     <div class="main-section">
-      <h1 class="match-title">India v/s Pakistan</h1>
-
-      <nav id="main-nav">
-        <a class="match-info-btn btn">Info</a>
-        <a class="match-commentary-btn btn">Commentary</a>
-        <a class="live-match-btn btn">Live</a>
-        <a class="scorecard-btn btn">ScoreCard</a>
-        <a class="squad-btn btn">Squads</a>
-      </nav>
-
-      <div class="score">
-        <div class="left">
-          <div class="img">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png"
-              alt=""
-            />
+        <h1 class="match-title"><span id="team_a"></span> v/s <span id="team_b"></span></h1>
+  
+        <nav id="main-nav">
+          <a class="match-info-btn btn" id="info" href="">Info</a>
+          <a class="match-commentary-btn btn" id="commentry" href="">Commentary</a>
+          <a class="live-match-btn btn" id="livematch" href="">Live</a>
+          <a class="scorecard-btn btn" id="scorecard" href="">ScoreCard</a>
+          <a class="squad-btn btn" id="squad" href="">Squads</a>
+        </nav>
+        <script>
+          document.getElementById('info').setAttribute('href', `matchinfo.html?match_id=${match_id}`);
+          document.getElementById('commentry').setAttribute('href', `matchcommentry.html?match_id=${match_id}`);
+          document.getElementById('livematch').setAttribute('href', `LiveMatch.html?match_id=${match_id}`);
+          document.getElementById('scorecard').setAttribute('href', `matchscorecard.html?match_id=${match_id}`);
+          document.getElementById('squad').setAttribute('href', `matchplaying11.html?match_id=${match_id}`);
+        </script>
+  
+        <div class="score">
+          <div class="left">
+            <div class="img">
+              <img id="team_a_img"
+                src=""
+                alt=""
+              />
+            </div>
+            <div class="score-left">
+              <p id="team_a_short">PAK</p>
+              <p id="team_a_scores">100-0</p>
+              <p id="team_a_over">5.0</p>
+            </div>
           </div>
-          <div class="score-left">
-            <p>IND</p>
-            <p>100-0</p>
-            <p>5.0</p>
+          <div class="mid">
+            <p class="live-status">lorem</p>
+          </div>
+          <div class="right">
+            <div class="score-right">
+              <p id="team_b_short">PAK</p>
+              <p id="team_b_scores">100-0</p>
+              <p id="team_b_over">20.0</p>
+            </div>
+            <div class="img">
+              <img id="team_b_img" src=""
+                alt=""
+              />
+            </div>
           </div>
         </div>
-        <div class="mid">
-          <p class="live-status">out</p>
-        </div>
-        <div class="right">
-          <div class="score-right">
-            <p>PAK</p>
-            <p>120-9</p>
-            <p>20.0</p>
+  
+        <div class="run-rate">
+          <div class="cur-rate">
+            <p id="curr_rate">CRR:10</p>
           </div>
-          <div class="img">
-            <img
-              src="https://cdn.britannica.com/46/3346-004-D3BDE016/flag-symbolism-Pakistan-design-Islamic.jpg"
-              alt=""
-            />
+          <div class="toss" id="toss">India Win Toss</div>
+          <div class="req-rate">
+            <p id="runrate">RRR:</p>
           </div>
         </div>
       </div>
-
-      <div class="run-rate">
-        <div class="cur-rate">
-          <p>CRR:10</p>
-        </div>
-        <div class="toss">India Win Toss</div>
-        <div class="req-rate">
-          <p>RRR:2</p>
-        </div>
-      </div>
-    </div>
-    <!-- Live Scores end -->
-
 
 
 
@@ -89,1122 +101,265 @@
     <div class="scorecard" >
       <div class="tabs">
         <div class="tab-pane">
-          <button class="btn scrored-tab-btn active" data-id="81">
+          <button class="btn scrored-tab-btn active" id="team_1" data-id="81">
             PAK 313 - 10 (77.1)</button
-          ><button class="btn scrored-tab-btn" data-id="142">
+          ><button class="btn scrored-tab-btn" id="team_2" data-id="142">
             AUS 116 - 2 (47)
           </button>
         </div>
-        <div class="tabs-content">
-          <div class="tab-content" id="81" style="">
-            <div class="sport-team-score-details batter">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batter</th>
-                    <th>R</th>
-                    <th>B</th>
-                    <th>4s</th>
-                    <th>6s</th>
-                    <th>SR</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Abdullah Shafique</div>
-                      <div class="player-status red f-700">
-                        c SPD Smith b MA Starc
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">2</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">0.00</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Imam-ul-Haq</div>
-                      <div class="player-status red f-700">not out</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">0.00</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Saim Ayub</div>
-                      <div class="player-status red f-700">
-                        c AT Carey b JR Hazlewood
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">2</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">0.00</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Shan Masood</div>
-                      <div class="player-status red f-700">
-                        c SPD Smith b MR Marsh
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">35</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">70</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">3</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">50.00</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Babar Azam</div>
-                      <div class="player-status red f-700">LBW PJ Cummins</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">26</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">40</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">4</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">65.00</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Saud Shakeel</div>
-                      <div class="player-status red f-700">
-                        c AT Carey b PJ Cummins
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">5</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">12</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">41.67</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Mohammad Rizwan</div>
-                      <div class="player-status red f-700">
-                        c JR Hazlewood b PJ Cummins
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">88</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">103</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">10</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">2</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">85.44</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Agha Salman</div>
-                      <div class="player-status red f-700">
-                        c TM Head b MA Starc
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">53</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">67</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">8</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">79.10</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Sajid Khan</div>
-                      <div class="player-status red f-700">
-                        c NM Lyon b PJ Cummins
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">15</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">23</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">2</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">65.22</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Aamer Jamal</div>
-                      <div class="player-status red f-700">
-                        c MA Starc b NM Lyon
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">82</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">97</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">9</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">4</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">84.54</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Mir Hamza</div>
-                      <div class="player-status red f-700">not out</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">7</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">43</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">16.28</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Hasan Ali</div>
-                      <div class="player-status red f-700">
-                        c MA Starc b PJ Cummins
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">5</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">0.00</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="sport-team-score-details bowler">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Bowler</th>
-                    <th>O</th>
-                    <th>M</th>
-                    <th>R</th>
-                    <th>W</th>
-                    <th>ER</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Mitchell Starc</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">16</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">75</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">2</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">4.69</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Josh Hazlewood</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">15</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">65</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">4.33</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Pat Cummins</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">18</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">61</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">5</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">3.39</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Nathan Lyon</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">17.1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">74</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">4.31</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Mitchell Marsh</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">7</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">27</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">3.86</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Marnus Labuschagne</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">3</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">9</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">3.00</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Travis Head</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">1.00</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="sport-team-score-details fow">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Fall of wickets</th>
-                    <th>Score</th>
-                    <th>Over</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Abdullah Shafique</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">0 - 1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0.2</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Saim Ayub</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">4 - 2</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">1.2</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Babar Azam</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">39 - 3</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">10.5</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Saud Shakeel</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">47 - 4</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">14.3</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Shan Masood</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">96 - 5</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">29.3</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Mohammad Rizwan</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">190 - 6</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">46.2</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Sajid Khan</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">220 - 7</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">52.2</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Agha Salman</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">226 - 8</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">53.4</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Hasan Ali</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">227 - 9</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">54.6</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Aamer Jamal</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">313 - 10</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">77.1</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="sport-team-score-details bowler">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Partnership</th>
-                    <th>Run</th>
-                    <th>Ball</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Abdullah Shafique &amp; Saim Ayub
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">2</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Saim Ayub &amp; Shan Masood
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">4</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">6</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Babar Azam &amp; Shan Masood
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">35</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">57</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Saud Shakeel &amp; Shan Masood
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">8</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">22</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Mohammad Rizwan &amp; Shan Masood
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">49</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">90</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Mohammad Rizwan &amp; Agha Salman
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">1</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Sajid Khan &amp; Agha Salman
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">30</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">36</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Agha Salman &amp; Aamer Jamal
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">6</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">8</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Hasan Ali &amp; Aamer Jamal
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">8</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Mir Hamza &amp; Aamer Jamal
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">86</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">133</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="tab-content" id="142" style="display: none">
-            <div class="sport-team-score-details batter">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batter</th>
-                    <th>R</th>
-                    <th>B</th>
-                    <th>4s</th>
-                    <th>6s</th>
-                    <th>SR</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">David Warner</div>
-                      <div class="player-status red f-700">
-                        c Babar Azam b Agha Salman
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">34</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">68</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">4</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">50.00</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Usman Khawaja</div>
-                      <div class="player-status red f-700">
-                        c Mohammad Rizwan b Aamer Jamal
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">47</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">143</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">4</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">32.87</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Marnus Labuschagne</div>
-                      <div class="player-status red f-700">not out</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">23</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">66</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">34.85</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Steven Smith</div>
-                      <div class="player-status red f-700">not out</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">6</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">7</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">85.71</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="sport-team-score-details bowler">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Bowler</th>
-                    <th>O</th>
-                    <th>M</th>
-                    <th>R</th>
-                    <th>W</th>
-                    <th>ER</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Sajid Khan</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">12</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">38</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">3.17</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Mir Hamza</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">10</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">11</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">1.10</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Aamer Jamal</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">8</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">26</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">3.25</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Hasan Ali</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">9</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">19</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">2.11</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">Agha Salman</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">8</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">0</div>
-                    </td>
-                    <td>
-                      <div class="player-score-4s f-700">18</div>
-                    </td>
-                    <td>
-                      <div class="player-score-6s f-700">1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-sr f-700">2.25</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="sport-team-score-details fow">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Fall of wickets</th>
-                    <th>Score</th>
-                    <th>Over</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">DA Warner</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">70 - 1</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">24.3</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">UT Khawaja</div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">108 - 2</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">43.3</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="sport-team-score-details bowler">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Partnership</th>
-                    <th>Run</th>
-                    <th>Ball</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Usman Khawaja &amp; David Warner
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">70</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">149</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Marnus Labuschagne &amp; Usman Khawaja
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">38</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">114</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="player-name f-700">
-                        Marnus Labuschagne &amp; Steven Smith
-                      </div>
-                    </td>
-                    <td>
-                      <div class="player-score-r f-700">8</div>
-                    </td>
-                    <td>
-                      <div class="player-score-b f-700">21</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <div class="tabs-content" id="contents">
+
         </div>
       </div>
     </div>
     <!-- Scorecard end -->
-
-
     <script>
-      const live_match = document.querySelector(".live-match");
-      const match_info = document.querySelector(".match-info");
-      const match_commentry = document.querySelector(".match-commentary");
-      const scorecard = document.querySelector(".scorecard");
-      const squad = document.querySelector(".squad");
-      const live_match_btn = document.querySelector(".live-match-btn");
-      const match_info_btn = document.querySelector(".match-info-btn");
-      const match_commentry_btn = document.querySelector(".match-commentary-btn");
-      const scorecard_btn = document.querySelector(".scorecard-btn");
-      const squad_btn = document.querySelector(".squad-btn");
+        var apiKey = "bd494afa153c0ddbfb33e7ba8cf51004";
+  
+  
+  
+  
+  
+        var formdata = new FormData();
+        formdata.append("match_id", match_id);
+  
+        var requestOptions = {
+          method: 'POST',
+          body: formdata,
+          redirect: 'follow'
+        };
+  
+        fetch(`http://apicricketchampion.in/apiv3/liveMatch/${apiKey}`, requestOptions)
+          .then(response => response.text())
+          .then(result => {
+            var team_a = document.getElementById('team_a');
+            var team_b = document.getElementById('team_b');
+            var team_a_short = document.getElementById('team_a_short');
+            var team_b_short = document.getElementById('team_b_short');
+            
+            var team_1 = document.getElementById('team_1');
+            var team_2 = document.getElementById('team_2');
+            var team_a_scores = document.getElementById('team_a_scores');
+            var team_b_scores = document.getElementById('team_b_scores');
+            var team_a_over = document.getElementById('team_a_over');
+            var team_b_over = document.getElementById('team_b_over');
+            var team_a_img = document.getElementById('team_a_img');
+            var team_b_img = document.getElementById('team_b_img');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            var team_b = document.getElementById('team_b');
+            result = JSON.parse(result);
+            result = result.data;
+            team_a.innerText=result.team_a;
+            team_b.innerText=result.team_b;
+            
+            team_1.innerText=result.team_a;
+            team_2.innerText=result.team_b;
+            var runrate= document.getElementById('runrate');
+            runrate.innerText=`RRR: ${result.runrate}`;
+  
+  
+            var curr_rate= document.getElementById('curr_rate');
+            curr_rate.innerText=`CRR: ${result.curr_rate}`;
+            var toss = document.getElementById('toss');
+            toss.innerText= result.toss;
+            team_a_short.innerText= result.team_a_short;
+            team_b_short.innerText= result.team_b_short;
+            team_a_scores.innerText= result.team_a_scores;
+            team_b_scores.innerText= result.team_b_scores;
+            team_a_over.innerText= result.team_a_over;
+            team_b_over.innerText= result.team_b_over;
+            team_a_img.src = result.team_a_img;
+            team_b_img.src = result.team_b_img;
+            
+            
+          })
+          .catch(error => console.log('error', error));
+  
+  
+        var formdata = new FormData();
+        formdata.append("match_id", match_id);
 
-      live_match_btn.addEventListener("click", () => {
-        match_info.style.display = "none";
-        match_commentry.style.display = "none";
-        scorecard.style.display = "none";
-        squad.style.display = "none";
-        live_match.style.display = "block";
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+        };
 
-        live_match_btn.classList.add("active");
-        match_info_btn.classList.remove("active");
-        match_commentry_btn.classList.remove("active");
-        scorecard_btn.classList.remove("active");
-        squad_btn.classList.remove("active");
-      });
-      match_info_btn.addEventListener("click", () => {
-        match_info.style.display = "block";
-        match_commentry.style.display = "none";
-        scorecard.style.display = "none";
-        squad.style.display = "none";
-        live_match.style.display = "none";
+        fetch(`http://apicricketchampion.in/apiv3/scorecardByMatchId/${apiKey}`, requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            result = JSON.parse(result);
+            result = result.data.scorecard;
 
-        live_match_btn.classList.remove("active");
-        match_info_btn.classList.add("active");
-        match_commentry_btn.classList.remove("active");
-        scorecard_btn.classList.remove("active");
-        squad_btn.classList.remove("active");
+            var contents = document.getElementById('contents');
+            contents.innerHTML = "";
+            for(var team in result){
+                contents.innerHTML +=`<div class="tab-content" id="${team}" style="">
+                                        <div class="sport-team-score-details batter">
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <th>Batter</th>
+                                                <th>R</th>
+                                                <th>B</th>
+                                                <th>4s</th>
+                                                <th>6s</th>
+                                                <th>SR</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="battsmen_team_${team}">
+                                            
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                        <div class="sport-team-score-details bowler">
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <th>Bowler</th>
+                                                <th>O</th>
+                                                <th>M</th>
+                                                <th>R</th>
+                                                <th>W</th>
+                                                <th>ER</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="bowling_team_${team}">
+                                            
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                        <div class="sport-team-score-details fow">
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <th>Fall of wickets</th>
+                                                <th>Score</th>
+                                                <th>Over</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="fallofwickets_team_${team}">
+                                            
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                        <div class="sport-team-score-details bowler">
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <th>Partnership</th>
+                                                <th>Run</th>
+                                                <th>Ball</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="partnership_team_${team}">
+                                            
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>`;
+
+                bat_team = document.getElementById(`battsmen_team_${team}`);
+                bowl_team = document.getElementById(`bowling_team_${team}`);
+                fow_team = document.getElementById(`fallofwickets_team_${team}`);
+                part_team = document.getElementById(`partnership_team_${team}`);
 
 
-      });
-      match_commentry_btn.addEventListener("click", () => {
-        match_info.style.display = "none";
-        match_commentry.style.display = "block";
-        scorecard.style.display = "none";
-        squad.style.display = "none";
-        live_match.style.display = "none";
+                for(var item of result[team].batsman){
+                    bat_team.innerHTML += `<tr>
+                                                <td>
+                                                <div class="player-name f-700">${item.name}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-r f-700">${item.run}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-b f-700">${item.ball}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-4s f-700">${item.fours}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-6s f-700">${item.sixes}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-sr f-700">${item.strike_rate}</div>
+                                                </td>
+                                            </tr>`;
+                }
 
-        live_match_btn.classList.remove("active");
-        match_info_btn.classList.remove("active");
-        match_commentry_btn.classList.add("active");
-        scorecard_btn.classList.remove("active");
-        squad_btn.classList.remove("active");
+                for(var item of result[team].bolwer){
+                    bowl_team.innerHTML += `<tr>
+                                                <td>
+                                                <div class="player-name f-700">${item.name}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-r f-700">${item.over}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-b f-700">${item.maiden}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-4s f-700">${item.run}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-6s f-700">${item.wicket}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-sr f-700">${item.economy}</div>
+                                                </td>
+                                            </tr>`;
+                }
+
+                for(var item of result[team].fallwicket){
+                    fow_team.innerHTML += `<tr>
+                                                <td>
+                                                <div class="player-name f-700">${item.player}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-r f-700">${item.score} - ${item.wicket}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-b f-700">${item.over}</div>
+                                                </td>
+                                            </tr>`;
+                }
 
 
-      });
-      scorecard_btn.addEventListener("click", () => {
-        match_info.style.display = "none";
-        match_commentry.style.display = "none";
-        scorecard.style.display = "block";
-        squad.style.display = "none";
-        live_match.style.display = "none";
+                for(var item of result[team].partnership){
+                    part_team.innerHTML += `<tr>
+                                                <td>
+                                                <div class="player-name f-700">
+                                                    ${item.players_name}
+                                                </div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-r f-700">${item.run}</div>
+                                                </td>
+                                                <td>
+                                                <div class="player-score-b f-700">${item.ball}</div>
+                                                </td>
+                                            </tr>`;
+                }
 
-        live_match_btn.classList.remove("active");
-        match_info_btn.classList.remove("active");
-        match_commentry_btn.classList.remove("active");
-        scorecard_btn.classList.add("active");
-        squad_btn.classList.remove("active");
 
-      });
-      squad_btn.addEventListener("click", () => {
-        match_info.style.display = "none";
-        match_commentry.style.display = "none";
-        scorecard.style.display = "none";
-        squad.style.display = "block";
-        live_match.style.display = "none";
+         
 
-        live_match_btn.classList.remove("active");
-        match_info_btn.classList.remove("active");
-        match_commentry_btn.classList.remove("active");
-        scorecard_btn.classList.remove("active");
-        squad_btn.classList.add("active");
 
-      });
+            }
 
-    </script>
+
+        })
+        .catch(error => console.log('error', error));
+      </script>
+
+    
   </body>
 </html>
