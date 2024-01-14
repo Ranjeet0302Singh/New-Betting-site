@@ -6,7 +6,7 @@ var requestOptions = {
     redirect: "follow",
 };
 
-fetch(`http://apicricketchampion.in/apiv3/liveMatchList/${apiKey}`, requestOptions)
+fetch(`//apicricketchampion.in/apiv3/liveMatchList/${apiKey}`, requestOptions)
     .then((response) => response.json()) // Parse response as JSON
     .then((result) => {
         if (result.live_count > 0) {
@@ -276,7 +276,7 @@ var requestOptions = {
     redirect: "follow",
 };
 
-fetch(`http://apicricketchampion.in/apiv3/upcomingMatches/${apiKey}`, requestOptions)
+fetch(`//apicricketchampion.in/apiv3/upcomingMatches/${apiKey}`, requestOptions)
     .then((response) => response.json()) // Parse response as JSON
     .then((result) => {
 
@@ -405,7 +405,7 @@ var requestOptions = {
     redirect: "follow",
 };
 
-fetch(`http://apicricketchampion.in/apiv3/news/${apiKey}`, requestOptions)
+fetch(`apicricketchampion.in/apiv3/news/${apiKey}`, requestOptions)
     .then((response) => response.text())
     .then((result) => {
         var news = document.getElementById("news");
